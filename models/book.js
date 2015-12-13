@@ -10,6 +10,9 @@ module.exports = function(sequelize, DataTypes) {
         Book.belongsToMany(models.Author,{
           through :models.BookAuthor
         });
+        Book.belongsToMany(models.Category,{
+          through :models.BookCategory
+        });
       }
     }
   });

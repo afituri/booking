@@ -1,16 +1,18 @@
 "use strict";
 
 module.exports = function(sequelize, DataTypes) {
-  var Cattegory = sequelize.define("Cattegory", {
+  var Category = sequelize.define("Category", {
     name: {type:DataTypes.STRING (60) , defaultValue:"Unknown name"},
     status:{type:DataTypes.INTEGER(1),defaultValue:1},
   }, {
     classMethods: {
       associate: function(models) {
-
+        Category.belongsToMany(models.Book,{
+          through :models.BookCategory
+        });
       }
     }
   });
 
-  return Cattegory;
+  return Category;
 };
