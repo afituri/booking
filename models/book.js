@@ -7,7 +7,9 @@ module.exports = function(sequelize, DataTypes) {
    }, {
     classMethods: {
       associate: function(models) {
-
+        Book.belongsToMany(models.Author,{
+          through :models.BookAuthor
+        });
       }
     }
   });
