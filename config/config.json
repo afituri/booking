@@ -2,7 +2,7 @@
   "development": {
     "dialect": "mysql",
     "username": "root",
-    "password": "102030",
+    "password": "",
     "database": "booking",
     "host": "localhost",
     "logging": false
