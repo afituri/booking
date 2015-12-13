@@ -3,7 +3,7 @@
     "dialect": "mysql",
     "username": "root",
     "password": "102030",
-    "database": "education",
+    "database": "booking",
     "host": "localhost",
     "logging": false
 
