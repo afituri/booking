@@ -5,7 +5,7 @@ var customer = require('../controller/customer').customer;
 /* GET home page. */
 router.get('/', function(req, res, next) {
   customer.getAll(function (result){
-    res.send(result);
+    res.render('customer',{title:'الزبائن',customers:result});
   });
 });
 

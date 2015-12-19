@@ -1,0 +1,29 @@
+extends layout
+
+block content
+  .container-fluid.well
+    .row
+      .col-sm-6.col-sm-offset-3.col-lg-6.col-lg-offset-3
+        table.table.table-striped.table-bordered.table-hover
+          thead 
+            tr 
+              th الاسم
+              th البريد الالكتروني
+              th الهاتف
+              th رقم البطاقة 
+              
+          tbody
+            for customer in customers
+              tr
+                td  #{customer.name}
+                td  #{customer.email}
+                td  #{customer.phone}
+                td  #{customer.idNumber}
+                td
+                  button.btn.btn-warning(type='button') تعديل
+                td 
+                  button.btn.btn-danger(type='button') إلغاء
+
+  script(src='/js/jquery-2.1.4.min.js')
+  script(src='/js/bootstrap.min.js')
+
