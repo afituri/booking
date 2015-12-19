@@ -29,9 +29,9 @@ router.get('/addAuthor', function  (req, res, next){
 });
 
 router.get('/editAuthor', function  (req, res, next){
-  var authorId = 8;
+  var authorId = 1;
   var obj = {
-    country : "المانيا",
+    name : "Abulgasem Said"
   };
   author.editAuthor(authorId, obj , function(result){
     //console.log(result);

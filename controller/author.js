@@ -2,9 +2,9 @@ var models = require("../models");
 exports.author = {
    /* add new author*/
   addAuthor : function(body,cb){
-    models.Author.create(body).then(function(result) {
-      cb(result);
-    });
+     models.Author.create(body).then(function(result) {
+       cb(result);
+     });
   },
 
   editAuthor : function (authorId, obj , cb) {

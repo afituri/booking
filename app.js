@@ -8,6 +8,7 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var author = require('./routes/author');
+var book = require('./routes/book');
 
 var category = require('./routes/category');
 
@@ -33,7 +34,7 @@ app.use('/users', users);
 app.use('/author', author);
 
 app.use('/category', category);
-
+app.use('/book', book);
 app.use('/customer', customer);
 
 
