@@ -5,7 +5,7 @@ var customer = require('../controller/customer').customer;
 /* GET home page. */
 router.get('/', function(req, res, next) {
   customer.getAll(function (result){
-    res.send(result);
+    res.render('customer',{title:'الزبائن',customers:result});
   });
 });
 
@@ -15,21 +15,10 @@ router.get('/new', function(req, res, next) {
 });
 
 
-router.get('/addCustomer', function  (req, res, next){
-  var obj1 = {
-    name : "mohamed",
-    email : "moh@yahoo.ly",
-    phone : "09119993831",
-    idNumber : "62230"
-  };
-  var obj2 = {
-    name : "Ali",
-    email : "Ali@gmail.ly",
-    phone : "09172873469",
-    idNumber : "634534"
-  };
-  customer.addCustomer(obj1 , obj2 , function(result){
-        res.send(result);
+router.post('/addCustomer', function  (req, res, next){
+  customer.addCustomer(req.body , function(result){
+    console.log(result);
+    res.redirect('/customer');
   });
 });
 

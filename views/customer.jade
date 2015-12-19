@@ -1,0 +1,68 @@
+extends layout
+
+block content
+  .container-fluid
+    .row
+      .col-sm-6.col-sm-offset-3.col-lg-6.col-lg-offset-3
+        .panel.panel-info
+          .panel-heading(dir='ltr')
+            h3.panel-title.pull-right= title
+            button.btn.btn-primary(type='button', data-toggle='modal', data-target='#addModal') إضافة
+          .panel-body
+            table.table.table-striped.table-bordered.table-hover
+              thead 
+                tr 
+                  th الاسم
+                  th البريد الالكتروني
+                  th الهاتف
+                  th رقم البطاقة 
+                  th تعديل
+                  th إلغاء 
+                  
+              tbody
+                for customer in customers
+                  tr
+                    td  #{customer.name}
+                    td  #{customer.email}
+                    td  #{customer.phone}
+                    td  #{customer.idNumber}
+                    td
+                      button.btn.btn-warning(type='button') تعديل
+                    td 
+                      button.btn.btn-danger(type='button') إلغاء
+      #addModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
+        .modal-dialog(role='document')
+          form.form-horizontal(method="post",action="/customer/addCustomer")
+            .modal-content
+              .modal-header
+                button.close(type='button', data-dismiss='modal', aria-label='Close')
+                  span(aria-hidden='true') &times;
+                |         
+                h4#myModalLabel.modal-title  اضافة زبون
+              .modal-body
+                  .form-group
+                      label.col-sm-2.control-label(for='name')  الاسم
+                      |     
+                      .col-sm-10
+                        input#name.form-control(type='text',name='name', placeholder='اسم الزبون')
+                    |   
+                  .form-group
+                      label.col-sm-2.control-label(for='email')  البريد الالكتروني:
+                      |     
+                      .col-sm-10
+                        input#name.form-control(type='email',name='email', placeholder='البريد الالكتروني')
+                    |   
+                  .form-group
+                      label.col-sm-2.control-label(for='phone')  الهاتف:
+                      |     
+                      .col-sm-10
+                        input#name.form-control(type='text',name='phone', placeholder='الهاتف')
+              .modal-footer
+                button.btn.btn-default(type='reset', data-dismiss='modal') إلغاء
+                |         
+                button.btn.btn-primary(type='submit') حفظ
+
+                          
+  script(src='/js/jquery-2.1.4.min.js')
+  script(src='/js/bootstrap.min.js')
+
