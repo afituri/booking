@@ -5,7 +5,7 @@ var author = require('../controller/author').author;
 /* GET home page. */
 router.get('/', function(req, res, next) {
   author.getAll(function (result){
-    res.render('author',{title : 'المحريين', authors: result.rows});
+    res.render('author',{title : 'المحريين', author : 'active', authors: result.rows});
   });
 });
 
@@ -15,16 +15,9 @@ router.get('/new', function(req, res, next) {
 });
 
 
-router.get('/addAuthor', function  (req, res, next){
-  var obj = {
-    name : "Ali salem",
-    country : "Japan",
-    birtday : "1977-12-01",
-    bio : " sdfsdf sf sdf sdf sdf sd fs df sd fsd fsdfjlsdjflsd f"
-  };
-  author.addAuthor(obj , function(result){
-    //console.log(result);
-    res.send(result);
+router.post('/addAuthor', function  (req, res, next){
+  author.addAuthor(req.body , function(result){
+    res.redirect('/author');
   });
 });
 

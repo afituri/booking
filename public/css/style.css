@@ -2,4 +2,11 @@
 
 body {
   font-family: 'Droid Arabic Kufi', sans-serif;
+  padding-top: 40px;
+  /*line-height: 25px;*/
 }
+/*right menu style start*/
+.fa{
+    padding-left: 5px;
+}
+/*right menu style end*/

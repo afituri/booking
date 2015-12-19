@@ -4,6 +4,30 @@ html
     title= title
     link(rel='stylesheet', href='/css/bootstrap.min.css')
     link(rel='stylesheet', href='/css/bootstrap-rtl.min.css')
+    link(rel='stylesheet', href='/css/font-awesome.min.css')
+    link(rel='stylesheet', href='/css/bootstrap-datetimepicker.min.css')  
     link(rel='stylesheet', href='/css/style.css')
   body
-    block content
+    .container-fluid
+      .row
+        .col-sm-2.col-md-2
+          .list-group
+            a.list-group-item(href="/author", class="#{author}") 
+              .fa.fa-graduation-cap
+              span محررين
+            a.list-group-item(href="/category", class="#{category}") 
+              .fa.fa-filter
+              span تصنيفات
+            a.list-group-item(href="/book", class="#{book}") 
+              .fa.fa-book
+              span كتب
+            a.list-group-item(href="/customer", class="#{customer}") 
+              .fa.fa-user
+              span زبائن
+            a.list-group-item(href="#", class="#{order}") 
+              .fa.fa-cart-arrow-down
+              span طلبات
+            a.list-group-item(href="#", class="#{users}") 
+              .fa.fa-users
+              span مستخدمين
+        block content
