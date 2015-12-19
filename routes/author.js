@@ -5,7 +5,7 @@ var author = require('../controller/author').author;
 /* GET home page. */
 router.get('/', function(req, res, next) {
   author.getAll(function (result){
-    res.send(result);
+    res.render('author',{title : 'المحريين', authors: result.rows});
   });
 });
 
@@ -17,9 +17,9 @@ router.get('/new', function(req, res, next) {
 
 router.get('/addAuthor', function  (req, res, next){
   var obj = {
-    name : "عبد القاسم الشابي",
-    country : "بريطانيا",
-    birtday : "2015-12-01",
+    name : "Ali salem",
+    country : "Japan",
+    birtday : "1977-12-01",
     bio : " sdfsdf sf sdf sdf sdf sd fs df sd fsd fsdfjlsdjflsd f"
   };
   author.addAuthor(obj , function(result){
