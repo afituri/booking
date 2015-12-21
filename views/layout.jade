@@ -1,7 +1,12 @@
 doctype html
 html
   head
+    meta(charset="utf-8")
     title= title
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="description", content="")
+    //- This is meta for mobile device
+    meta(name="viewport", content="width=device-width, initial-scale=1")
     link(rel='stylesheet', href='/css/bootstrap.min.css')
     link(rel='stylesheet', href='/css/bootstrap-rtl.min.css')
     link(rel='stylesheet', href='/css/font-awesome.min.css')
@@ -10,7 +15,7 @@ html
   body
     .container-fluid
       .row
-        .col-sm-2.col-md-2
+        .col-xs-12.col-lg-2
           .list-group
             a.list-group-item(href="/author", class="#{author}") 
               .fa.fa-graduation-cap
