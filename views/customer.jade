@@ -1,35 +1,32 @@
 extends layout
 
 block content
-  .container-fluid
-    .row
-      .col-sm-6.col-sm-offset-3.col-lg-6.col-lg-offset-3
-        .panel.panel-info
-          .panel-heading(dir='ltr')
-            h3.panel-title.pull-right= title
-            button.btn.btn-primary(type='button', data-toggle='modal', data-target='#addModal') إضافة
-          .panel-body
-            table.table.table-striped.table-bordered.table-hover
-              thead 
-                tr 
-                  th الاسم
-                  th البريد الالكتروني
-                  th الهاتف
-                  th رقم البطاقة 
-                  th تعديل
-                  th إلغاء 
-                  
-              tbody
-                for customer in customers
-                  tr
-                    td  #{customer.name}
-                    td  #{customer.email}
-                    td  #{customer.phone}
-                    td  #{customer.idNumber}
-                    td
-                      button.btn.btn-warning(type='button') تعديل
-                    td 
-                      button.btn.btn-danger(type='button') إلغاء
+  .col-sm-10.col-lg-10
+    .panel.panel-info
+      .panel-heading(dir='ltr')
+        h3.panel-title.pull-right= title
+        button.btn.btn-primary(type='button', data-toggle='modal', data-target='#addModal') إضافة
+      .panel-body
+        table.table.table-striped.table-bordered.table-hover
+          thead 
+            tr 
+              th الاسم
+              th البريد الالكتروني
+              th الهاتف
+              th رقم البطاقة 
+              th تعديل
+              th إلغاء 
+          tbody
+            for customer in customers
+              tr
+                td  #{customer.name}
+                td  #{customer.email}
+                td  #{customer.phone}
+                td  #{customer.idNumber}
+                td
+                  button.btn.btn-warning(type='button') تعديل
+                td 
+                  button.btn.btn-danger(type='button') إلغاء
       #addModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
         .modal-dialog(role='document')
           form.form-horizontal(method="post",action="/customer/addCustomer")
