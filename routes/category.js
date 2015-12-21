@@ -5,7 +5,7 @@ var category = require('../controller/category').category;
 /* GET home page. */
 router.get('/', function(req, res, next) {
   category.getAll(function (result){
-    res.render('category',{title : 'التصنيفات', categories: result.rows});
+    res.render('category',{title : 'التصنيفات', categories: result,category:"active"});
   });
 });
 
@@ -16,7 +16,7 @@ router.get('/new', function(req, res, next) {
 
 
 router.post('/addCategory', function  (req, res, next){
-  category.addCategory(req.body , function(result){
+  category.addcategory(req.body , function(result){
     console.log(result);
     res.redirect('/category');
   });

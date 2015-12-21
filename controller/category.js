@@ -21,7 +21,7 @@ exports.category = {
   },
 
   getAll : function (cb) {
-    models.Category.findAndCountAll({where : {status :1}})
+    models.Category.findAll({where : {status :1}})
       .then (function (result){
         cb(result);
       });
