@@ -1,12 +1,12 @@
 extends layout
 
 block content
-  .col-sm-10.col-lg-10
+  .col-xs-12.col-lg-10
     .panel.panel-info
       .panel-heading(dir='ltr')
         h3.panel-title.pull-right= title
         button.btn.btn-primary(type='button', data-toggle='modal', data-target='#addModal') إضافة
-      .panel-body
+      .table-responsive
         table.table.table-striped.table-bordered.table-hover
           thead 
             tr 

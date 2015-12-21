@@ -1,31 +1,33 @@
 extends layout
+
 block content
-  .col-sm-10.col-lg-10
+  .col-xs-12.col-lg-10
     .panel.panel-info
       .panel-heading(dir='ltr')
         h3.panel-title.pull-right= title
         button.btn.btn-primary(type='button', data-toggle='modal', data-target='#addModal') اضافة
-      table.table.table-striped.table-hover
-        thead 
-          tr 
-            th الاسم
-            th سنة الميلاد
-            th الاصل
-            th السيرة الذاتية
-            th.text-center تعديل
-            th.text-center إلغاء
+      .table-responsive
+        table.table.table-striped.table-hover
+          thead 
+            tr 
+              th الاسم
+              th سنة الميلاد
+              th الاصل
+              th السيرة الذاتية
+              th.text-center تعديل
+              th.text-center إلغاء
 
-        tbody
-          for author in authors
-            tr
-              td  #{author.name}
-              td  #{author.birtday.getDate()} / #{author.birtday.getMonth() + 1} / #{author.birtday.getFullYear()}
-              td  #{author.country}
-              td  #{author.bio}
-              td.text-center
-                button.btn.btn-warning(type='button') تعديل
-              td.text-center 
-                button.btn.btn-danger(type='button') إلغاء
+          tbody
+            for author in authors
+              tr
+                td  #{author.name}
+                td  #{author.birtday.getDate()} / #{author.birtday.getMonth() + 1} / #{author.birtday.getFullYear()}
+                td  #{author.country}
+                td  #{author.bio}
+                td.text-center
+                  button.btn.btn-warning(type='button') تعديل
+                td.text-center 
+                  button.btn.btn-danger(type='button') إلغاء
   #addModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
         .modal-dialog(role='document')
           form.form-horizontal(method="post", action="/author/addAuthor")
