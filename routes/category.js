@@ -15,14 +15,10 @@ router.get('/new', function(req, res, next) {
 });
 
 
-router.get('/addcategory', function  (req, res, next){
-  var obj = {
-    name : "jelbo",
- 
-  };
-  category.addcategory(obj , function(result){
-    //console.log(result);
-    res.send(result);
+router.post('/addCategory', function  (req, res, next){
+  category.addCategory(req.body , function(result){
+    console.log(result);
+    res.redirect('/category');
   });
 });
 
