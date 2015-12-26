@@ -9,6 +9,13 @@ router.get('/', function(req, res, next) {
   });
 });
 
+/* Get all categories*/
+router.get('/getAll', function(req, res, next) {
+   category.getAll(function (result){
+    res.send(result);
+  });
+})
+
 /* GET home page. */
 router.get('/new', function(req, res, next) {
   res.render("newcategory");

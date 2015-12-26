@@ -3,7 +3,7 @@ exports.book = {
    /* add new author*/
   addBook : function(body,cb){
      models.Book.create(body).then(function(result) {
-       cb(result);
+       cb(result.id);
      });
   },
 
@@ -25,5 +25,21 @@ exports.book = {
       .then (function (result){
         cb(result);
       });
+  },
+
+  getDetails : function(bookId, cb) {
+    models.Book.findOne({
+      where: {
+        id: bookId
+      },
+      "include": [
+        {
+          "model": models.Author,
+          "through": models.BookAuthor
+        }
+      ]
+    }).then(function (result) {
+      cb(result);
+    });
   }
 }

@@ -1,0 +1,90 @@
+extends layout
+
+block content
+  .col-xs-12.col-lg-10
+    .panel.panel-info
+      .panel-heading(dir='ltr')
+        h3.panel-title.pull-right= title
+        button#newBook.btn.btn-primary(type='button', data-toggle='modal', data-target='#addModal') اضافة
+      .table-responsive
+        table.table.table-striped.table-hover
+          thead 
+            tr 
+              th اسم الكتاب
+              th الاجار اليومي
+              th معلومات اضافية
+              th.text-center تعديل
+              th.text-center إلغاء
+
+          tbody
+            for book in books
+              tr(data-id="#{book.id}")
+                td  #{book.name}
+                td  #{book.DailyRent}
+                td.text-center
+                  button.showDetails.btn.btn-info(type='button',value="#{book.id}") عرض
+                td.text-center
+                  button.btn.btn-warning(type='button') تعديل
+                td.text-center 
+                  button.btn.btn-danger(type='button') إلغاء
+  #addModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
+    .modal-dialog(role='document')
+      form.form-horizontal(method="post", action="/book/addBook")
+        .modal-content
+          .modal-header
+            button.close(type='button', data-dismiss='modal', aria-label='Close')
+              span(aria-hidden='true') &times;
+            |         
+            h4#myModalLabel.modal-title اضافة كتاب جديد
+          |       
+          .modal-body
+            .form-group
+              label.col-sm-2.control-label(for='name') اسم الكتاب
+              |     
+              .col-sm-10
+                input#name.form-control(type='text', name ='name', placeholder='اسم الكتاب')
+            |   
+            .form-group
+              label.col-sm-2.control-label(for='name') المحررين
+              |     
+              .col-sm-10
+                select.selectpicker(id="authors" name = "authors" multiple="", title="اختر المحررين...")
+            |   
+            .form-group
+              label.col-sm-2.control-label(for='name') التصنيفات
+              |     
+              .col-sm-10
+                select.selectpicker(id="categories" name = "categories" multiple="", title="اختر التصنيفات...")
+            |   
+            .form-group
+              label.col-sm-2.control-label(for='DailyRent') الاجار اليومي
+              |     
+              .col-sm-10
+                input#DailyRent.form-control(type='text', name='DailyRent', placeholder='مواليد')
+          .modal-footer
+            button.btn.btn-default(type='button', data-dismiss='modal') إلغاء
+            |         
+            button.btn.btn-primary(type='submit') اضافة
+  #bookModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
+    .modal-dialog(role='document')
+      form.form-horizontal(method="post", action="/book/addBook")
+        .modal-content
+          .modal-header
+            button.close(type='button', data-dismiss='modal', aria-label='Close')
+              span(aria-hidden='true') &times;
+            |         
+            h4#myModalLabel.modal-title بيانات الكتاب
+          |       
+          .modal-body
+            table
+              thead
+                tr
+                  th اسم الكاتب
+              tbody#authorNames
+
+            
+  script(src='/js/jquery-2.1.4.min.js')
+  script(src='/js/bootstrap.min.js')
+  script(src='/js/bootstrap-select.min.js')
+  script(src='/js/book.js')
+ 

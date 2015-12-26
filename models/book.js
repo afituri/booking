@@ -14,7 +14,7 @@ module.exports = function(sequelize, DataTypes) {
         Book.belongsToMany(models.Category,{
           through :models.BookCategory
         });
-        Book.belongsToMany(models.Category,{
+        Book.belongsToMany(models.Order,{
           through :models.BookOrder
         });
       }

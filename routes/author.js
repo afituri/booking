@@ -9,6 +9,13 @@ router.get('/', function(req, res, next) {
   });
 });
 
+/* Get all authors*/
+router.get('/getAll', function(req, res, next) {
+  author.getAll(function (result){
+    res.send(result.rows);
+  });
+})
+
 /* GET home page. */
 router.get('/new', function(req, res, next) {
   res.render("newAuthor");

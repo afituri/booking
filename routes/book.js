@@ -1,11 +1,12 @@
 var express = require('express');
 var router = express.Router();
 var book = require('../controller/book').book;
+var helpers = require('../controller/helpers');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  book.getAll(function (result){
-    res.send(result);
+  book.getAll(function (books){
+    res.render('book', {title : "books", books: books.rows, book : "active"});
   });
 });
 
@@ -15,14 +16,21 @@ router.get('/new', function(req, res, next) {
 });
 
 
-router.get('/addBook', function  (req, res, next){
-  var obj = {
-    name : "الكتاب الاخضر",
-    DailyRent : 10.5
-  };
-  book.addBook(obj , function(result){
-    //console.log(result);
-    res.send(result);
+router.post('/addBook', function  (req, res, next){
+  console.log(req.body);
+  book.addBook(req.body , function(bookId){
+    helpers.addBookCA(bookId,req.body.authors, req.body.categories, function(result){
+      if(result) {
+        res.redirect('/book');
+      }
+    });
+  });
+});
+
+/* GET book Details. */
+router.get('/getDetails/:id', function(req, res, next) {
+  book.getDetails(req.params.id, function(results){
+    res.send(results);
   });
 });
 
