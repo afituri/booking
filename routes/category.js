@@ -5,7 +5,7 @@ var category = require('../controller/category').category;
 /* GET home page. */
 router.get('/', function(req, res, next) {
   category.getAll(function (result){
-    res.render('category',{title : 'التصنيفات', categories: result,category:"active"});
+    res.render('category',{title : 'التصنيفات', categories: result, category:'active'});
   });
 });
 
