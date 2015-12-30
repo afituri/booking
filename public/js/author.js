@@ -17,7 +17,7 @@ $(document).ready( function(){
   var msg = getUrlParameter('msg');
   if(msg==1){
     custNotify("success","نجح","تم التعديل بنجاح","ok-sign","bounceIn","bounceOut");
-  } else {
+  } else if(msg==2){
     custNotify("danger","فشل","لم يتم التعديل","remove-sign","bounceIn","bounceOut");
   }  
 });
