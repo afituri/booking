@@ -28,6 +28,13 @@ $(document).ready( function(){
         rows += "<tr><td>"+results.Authors[index].name+"</td></tr>";
       }
       $(rows).appendTo($('#authorNames'));
+      
+      rows = "";
+      $('#categoryNames').empty();
+      for (index in results.Categories){
+        rows += "<tr><td>"+results.Categories[index].name+"</td></tr>";
+      }
+      $(rows).appendTo($('#categoryNames'));
       $('#bookModal').modal('show');
     })
   });

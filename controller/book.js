@@ -36,6 +36,10 @@ exports.book = {
         {
           "model": models.Author,
           "through": models.BookAuthor
+        },
+        {
+          "model" : models.Category,
+          "through": models.BookCategory
         }
       ]
     }).then(function (result) {

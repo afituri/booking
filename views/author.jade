@@ -19,60 +19,109 @@ block content
 
           tbody
             for author in authors
-              tr
+              tr(id="author-#{author.id}", data-name="#{author.name}", data-birtday="#{author.birtday}", data-bio = "#{author.bio}", data-country = "#{author.country}")
                 td  #{author.name}
                 td  #{author.birtday.getDate()} / #{author.birtday.getMonth() + 1} / #{author.birtday.getFullYear()}
                 td  #{author.country}
                 td  #{author.bio}
                 td.text-center
-                  button.btn.btn-warning(type='button') تعديل
+                  button.editAuthor.btn.btn-warning(type='button', data-toggle='modal', data-target='#editModal', value="#{author.id}") تعديل
                 td.text-center 
                   button.btn.btn-danger(type='button') إلغاء
   #addModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
-        .modal-dialog(role='document')
-          form.form-horizontal(method="post", action="/author/addAuthor")
-            .modal-content
-              .modal-header
-                button.close(type='button', data-dismiss='modal', aria-label='Close')
-                  span(aria-hidden='true') &times;
-                |         
-                h4#myModalLabel.modal-title اضافة محرر جديد
-              |       
-              .modal-body
-                .form-group
-                  label.col-sm-2.control-label(for='name') الاسم
-                  |     
-                  .col-sm-10
-                    input#name.form-control(type='text', name ='name', placeholder='اسم المحرر')
-                |   
-                .form-group
-                  label.col-sm-2.control-label(for='birtday') مواليد
-                  |     
-                  .col-sm-10
-                    input#birtday.form-control(type='text', name='birtday', placeholder='مواليد')
-                |   
-                .form-group
-                  label.col-sm-2.control-label(for='country') الاصل
-                  |     
-                  .col-sm-10
-                    input#country.form-control(type='text', name='country', placeholder='الاصل')
-                |   
-                .form-group
-                  label.col-sm-2.control-label(for='bio') السيرة
-                  |     
-                  .col-sm-10
-                    textarea.form-control(rows='3', name='bio', placeholder='سيرة المحرر')
-              |       
-              .modal-footer
-                button.btn.btn-default(type='button', data-dismiss='modal') إلغاء
-                |         
-                button.btn.btn-primary(type='submit') اضافة
+    .modal-dialog(role='document')
+      form.form-horizontal(method="post", action="/author/addAuthor")
+        .modal-content
+          .modal-header
+            button.close(type='button', data-dismiss='modal', aria-label='Close')
+              span(aria-hidden='true') &times;
+            |         
+            h4#myModalLabel.modal-title اضافة محرر جديد
+          |       
+          .modal-body
+            .form-group
+              label.col-sm-2.control-label(for='name') الاسم
+              |     
+              .col-sm-10
+                input#name.form-control(type='text', name ='name', placeholder='اسم المحرر')
+            |   
+            .form-group
+              label.col-sm-2.control-label(for='birtday') مواليد
+              |     
+              .col-sm-10
+                input#birtday.form-control(type='text', name='birtday', placeholder='مواليد')
+            |   
+            .form-group
+              label.col-sm-2.control-label(for='country') الاصل
+              |     
+              .col-sm-10
+                input#country.form-control(type='text', name='country', placeholder='الاصل')
+            |   
+            .form-group
+              label.col-sm-2.control-label(for='bio') السيرة
+              |     
+              .col-sm-10
+                textarea.form-control(rows='3', name='bio', placeholder='سيرة المحرر')
+          |       
+          .modal-footer
+            button.btn.btn-default(type='button', data-dismiss='modal') إلغاء
+            |         
+            button.btn.btn-primary(type='submit') اضافة
+  #editModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
+    .modal-dialog(role='document')
+      form.form-horizontal(method="post", action="/author/editAuthor")
+        .modal-content
+          .modal-header
+            button.close(type='button', data-dismiss='modal', aria-label='Close')
+              span(aria-hidden='true') &times;
+            |         
+            h4#myModalLabel.modal-title تعديل محرر 
+          |       
+          .modal-body
+            .form-group
+              label.col-sm-2.control-label(for='name') الاسم
+              |     
+              .col-sm-10
+                input#eName.form-control(type='text', name ='name', placeholder='اسم المحرر')
+                input#eId.form-control(type='hidden', name ='id', placeholder='اسم المحرر')
+            |   
+            .form-group
+              label.col-sm-2.control-label(for='birtday') مواليد
+              |     
+              .col-sm-10
+                input#eBirtday.form-control(type='text', name='birtday', placeholder='مواليد')
+            |   
+            .form-group
+              label.col-sm-2.control-label(for='country') الاصل
+              |     
+              .col-sm-10
+                input#eCountry.form-control(type='text', name='country', placeholder='الاصل')
+            |   
+            .form-group
+              label.col-sm-2.control-label(for='bio') السيرة
+              |     
+              .col-sm-10
+                textarea#eBio.form-control(rows='3', name='bio', placeholder='سيرة المحرر')
+          |       
+          .modal-footer
+            button.btn.btn-default(type='button', data-dismiss='modal') إلغاء
+            |         
+            button.btn.btn-primary(type='submit') اضافة
   script(src='/js/jquery-2.1.4.min.js')
   script(src='/js/bootstrap.min.js')
   script(src='/js/moment-with-locales.min.js')
   script(src='/js/bootstrap-datetimepicker.min.js')
+  script(src='/js/bootstrap-notify.min.js')
+  script(src='/js/helpers.js')
+  script(src='/js/author.js')
   script.
     $('#birtday').datetimepicker({
+      useCurrent: false,
+      viewMode: 'years',
+      format: 'YYYY-MM-DD',
+      locale: 'ar-sa'
+    });
+    $('#eBirtday').datetimepicker({
       useCurrent: false,
       viewMode: 'years',
       format: 'YYYY-MM-DD',

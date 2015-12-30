@@ -28,14 +28,11 @@ router.post('/addAuthor', function  (req, res, next){
   });
 });
 
-router.get('/editAuthor', function  (req, res, next){
-  var authorId = 1;
-  var obj = {
-    name : "Abulgasem Said"
-  };
-  author.editAuthor(authorId, obj , function(result){
-    //console.log(result);
-    res.send(result);
+router.post('/editAuthor', function  (req, res, next){
+  var authorId = req.body.id;
+  delete req.body.id;
+  author.editAuthor(authorId, req.body, function(result){
+    res.redirect("/author?msg=1");
   });
 });
 

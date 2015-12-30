@@ -76,11 +76,21 @@ block content
             h4#myModalLabel.modal-title بيانات الكتاب
           |       
           .modal-body
-            table
-              thead
-                tr
-                  th اسم الكاتب
-              tbody#authorNames
+            .container-fluid
+              .row
+                .col-xs-12.col-lg-6
+                  table
+                    thead
+                      tr
+                        th المحررين
+                    tbody#authorNames
+                .col-xs-12.col-lg-6
+                  table
+                    thead
+                      tr
+                        th التصنيفات
+                    tbody#categoryNames
+
 
             
   script(src='/js/jquery-2.1.4.min.js')

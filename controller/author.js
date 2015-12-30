@@ -9,8 +9,12 @@ exports.author = {
 
   editAuthor : function (authorId, obj , cb) {
     models.Author.update(obj, {where : {id : authorId}})
-      .then(function (result){
-        cb(result);
+      .then(function (err, result){
+        if(!err){
+          cb(result);
+        } else {
+          cb(false);
+        }
       });
   },
   deleteAuthor : function (authorId, cb) {
