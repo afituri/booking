@@ -22,7 +22,7 @@ router.post('/addCustomer', function  (req, res, next){
   });
 });
 
-router.get('/editCustomer', function  (req, res, next){
+router.post('/editCustomer', function  (req, res, next){
   var customerId = req.body.id;
   delete req.body.id;
   customer.editCustomer(customerId, req.body, function(result){
