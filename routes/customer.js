@@ -23,13 +23,10 @@ router.post('/addCustomer', function  (req, res, next){
 });
 
 router.get('/editCustomer', function  (req, res, next){
-  var CustomerId = 3;
-  var obj = {
-    phone : "092999999",
-    };
-  customer.editCustomer(CustomerId, obj , function(result){
-    //console.log(result);
-    res.send(result);
+  var customerId = req.body.id;
+  delete req.body.id;
+  customer.editCustomer(customerId, req.body, function(result){
+    res.redirect("/customer?msg=1");
   });
 });
 

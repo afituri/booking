@@ -8,10 +8,14 @@ exports.customer = {
   },
   /*Edit Customer*/
   editCustomer : function(customerId,obj,cb){
-    models.Customer.update(obj,{where : {id : customerId}})
-    .then(function (result){
-      cb(result);
-    });
+    models.Customer.update(obj, {where : {id : customerId}})
+      .then(function (err, result){
+        if(!err){
+          cb(result);
+        } else {
+          cb(false);
+        }
+      });
   }, 
   //Delete Customer:
   deleteCustomer : function (customerId,cb){

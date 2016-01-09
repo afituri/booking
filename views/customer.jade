@@ -24,7 +24,7 @@ block content
                 td  #{customer.phone}
                 td  #{customer.idNumber}
                 td
-                  button.btn.btn-warning(type='button') تعديل
+                  button.editCustomer.btn-warning(type='button',data-toggle='modal', data-target='#editModal', value="#{customer.id}") تعديل
                 td 
                   button.btn.btn-danger(type='button') إلغاء
       #addModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
@@ -63,8 +63,45 @@ block content
                 button.btn.btn-default(type='reset', data-dismiss='modal') إلغاء
                 |         
                 button.btn.btn-primary(type='submit') حفظ
-
-                          
+      #editModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
+        .modal-dialog(role='document')
+          form.form-horizontal(method="post",action="/customer/editCustomer")
+            .modal-content
+              .modal-header
+                button.close(type='button', data-dismiss='modal', aria-label='Close')
+                  span(aria-hidden='true') &times;
+                |         
+                h4#myModalLabel.modal-title  تعديل زبون
+              .modal-body
+                .form-group
+                  label.col-sm-3.control-label(for='name')  الاسم:
+                  |     
+                  .col-sm-9
+                    input#eName.form-control(type='text',name='name', placeholder='اسم الزبون')
+                    input#eId.form-control(type='hidden', name ='id', placeholder='اسم ا')  
+                .form-group
+                  label.col-sm-3.control-label(for='email')  البريد الالكتروني:
+                  |     
+                  .col-sm-9
+                    input#eEmail.form-control(type='email',name='email', placeholder='البريد الالكتروني')
+                  |   
+                .form-group
+                  label.col-sm-3.control-label(for='phone')  الهاتف:
+                  |     
+                  .col-sm-9
+                    input#ePhone.form-control(type='text',name='phone', placeholder='الهاتف')
+                .form-group
+                  label.col-sm-3.control-label(for='idNumber')  رقم البطاقة :
+                  |     
+                  .col-sm-9
+                    input#eIdNmuber.form-control(type='text',name='idNumber', placeholder='رقم البطاقة :')        
+              .modal-footer
+                button.btn.btn-default(type='button', data-dismiss='modal') إلغاء
+                |         
+                button.btn.btn-primary(type='submit') حفظ
   script(src='/js/jquery-2.1.4.min.js')
   script(src='/js/bootstrap.min.js')
+  script(src='/js/bootstrap-notify.min.js')
+  script(src='/js/helpers.js')
+  script(src='/js/customer.js')
 
