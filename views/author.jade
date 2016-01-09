@@ -30,7 +30,7 @@ block content
                   button.deleteAuthor.btn.btn-danger(type='button', data-toggle='modal', data-target='#deleteModal', value="#{author.id}") إلغاء
   #addModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
     .modal-dialog(role='document')
-      form.form-horizontal(method="post", action="/author/addAuthor")
+      form#addAuthor.form-horizontal(method="post", action="/author/addAuthor")
         .modal-content
           .modal-header
             button.close(type='button', data-dismiss='modal', aria-label='Close')
@@ -43,7 +43,7 @@ block content
               label.col-sm-2.control-label(for='name') الاسم
               |     
               .col-sm-10
-                input#name.form-control(type='text', name ='name', placeholder='اسم المحرر')
+                input.form-control(type='text', name ='name', placeholder='اسم المحرر')
             |   
             .form-group
               label.col-sm-2.control-label(for='birtday') مواليد
@@ -124,6 +124,7 @@ block content
             |         
             button.btn.btn-primary(type='submit') نعم
   script(src='/js/jquery-2.1.4.min.js')
+  script(src='/js/jquery.validate.min.js')
   script(src='/js/bootstrap.min.js')
   script(src='/js/moment-with-locales.min.js')
   script(src='/js/bootstrap-datetimepicker.min.js')
