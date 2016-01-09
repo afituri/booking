@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  .container-fluid.well
+    .row
+      .col-sm-6.col-sm-offset-3.col-lg-6.col-lg-offset-3
+        .form-top
+          .form-top-right
+            h3.text-right شاشة الدخول
+            p الرجاء ادخال اسم المستخدم وكلمة المرور
+          .form-top-left
+            i.fa.fa-lock
+          .form-bottom
+            form#login_form.login-form(role="form", action="users/login", method="post")
+              .form-group.text-right
+                label.sr-only(for="form-username") Username
+                input#user_email.form-username.form-control(type="text", name="username", placeholder="اسم المستخدم")
+              .form-group(style="padding:12px 0 12px 0;")
+                label.sr-only(for="form-password") Password
+                input#user_password.form-password.form-control(type="password", name="password", placeholder="كلمة المرور")
+              button.btn(type="submit") 
+                i.fa.fa-sign-in
+                span  دخول
+  script(src='/js/jquery-2.1.4.min.js')
+  script(src='/js/bootstrap.min.js')
+

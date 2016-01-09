@@ -1,9 +1,10 @@
 var express = require('express');
 var router = express.Router();
 var author = require('../controller/author').author;
+var helpers = require('../controller/helpers');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/',helpers.isLogin, function(req, res, next) {
   author.getAll(function (result){
     res.render('author',{title : 'المحريين', author : 'active', authors: result.rows});
   });
