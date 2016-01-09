@@ -18,14 +18,14 @@ block content
               th إلغاء 
           tbody
             for customer in customers
-              tr
+              tr(id="customer-#{customer.id}",data-name="#{customer.name}",data-email="#{customer.email}",data-phone="#{customer.phone}",data-idNumber="#{customer.idNumber}")
                 td  #{customer.name}
                 td  #{customer.email}
                 td  #{customer.phone}
                 td  #{customer.idNumber}
-                td
-                  button.editCustomer.btn-warning(type='button',data-toggle='modal', data-target='#editModal', value="#{customer.id}") تعديل
-                td 
+                td.text-center
+                  button.editCustomer.btn.btn-warning(type='button', data-toggle='modal', data-target='#editModal', value="#{customer.id}") تعديل
+                td.text-center 
                   button.btn.btn-danger(type='button') إلغاء
       #addModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
         .modal-dialog(role='document')
@@ -47,7 +47,7 @@ block content
                   label.col-sm-3.control-label(for='email')  البريد الالكتروني:
                   |     
                   .col-sm-9
-                    input#name.form-control(type='email',name='email', placeholder='البريد الالكتروني')
+                    input#email.form-control(type='email',name='email', placeholder='البريد الالكتروني')
                   |   
                 .form-group
                   label.col-sm-3.control-label(for='phone')  الهاتف:
