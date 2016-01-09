@@ -36,11 +36,10 @@ router.post('/editAuthor', function  (req, res, next){
   });
 });
 
-router.get('/deleteAuthor', function  (req, res, next){
-  var authorId = 7;
- 
+router.post('/deleteAuthor', function  (req, res, next){
+  var authorId = req.body.id;
   author.deleteAuthor(authorId , function(result){
-    res.send(result);
+    res.redirect("/author?msg=3");
   });
 });
 

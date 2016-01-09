@@ -13,12 +13,19 @@ $(document).ready( function(){
     $('#eBio').val(bio);
     
   });
+
+  $('.deleteAuthor').on('click', function(){
+    var authorId = $(this).val();
+    $('#dId').val(authorId);
+  });
   
   var msg = getUrlParameter('msg');
   if(msg==1){
     custNotify("success","نجح","تم التعديل بنجاح","ok-sign","bounceIn","bounceOut");
   } else if(msg==2){
     custNotify("danger","فشل","لم يتم التعديل","remove-sign","bounceIn","bounceOut");
+  } else if(msg==3){
+    custNotify("success","نجح","تم الحذف بنجاح","ok-sign","bounceIn","bounceOut");
   }  
 });
 
